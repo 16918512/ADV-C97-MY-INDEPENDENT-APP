@@ -1,0 +1,41 @@
+function start() {
+    //This is your home page were you will be asked about what you would like to check is in the pantry
+    println("*****************************************");
+    println("*                                       *");
+    println("* Welcome to the Shopping List Program! *");
+    println("*                                       *");
+    println("*****************************************");
+    //This is your pantry with loads of foods and anything elese that you add/ 
+    var pantry = ["sugar", "brown sugar", "flour", "chocolate", "pasta", "peanut butter", "nutella", "oats", "bread"];
+    var input = [];
+    var newItem = shelf(pantry, input);
+    finish(input , newItem);
+}
+function finish(input , newItem) {
+    var counter = 0;
+    if (!newItem) {
+        println(" ");
+        println("It looks like you have everything you need!");
+        return;
+    }
+    println(" ");
+    println("You need to go shopping for!");
+    for (var i = 0; i < input.length; i++) {
+        counter += 1;
+        println(counter + ". " + input[i]);
+    }
+}
+function shelf(pantry, input ) {
+   var itemAdded = false;
+    while (true) {
+        var whatNeeded = readLine("Enter an item('done' when complete): ");
+        if (whatNeeded == "done") {
+            break;
+        } 
+        if (pantry.indexOf(whatNeeded) === -1) {
+            input .push(whatNeeded);
+            itemAdded = true;
+        }
+    } 
+    return itemAdded;
+}
